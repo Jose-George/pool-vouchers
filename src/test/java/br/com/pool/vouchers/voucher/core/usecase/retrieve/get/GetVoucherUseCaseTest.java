@@ -40,7 +40,7 @@ public class GetVoucherUseCaseTest {
         final var expectedVoucher = easyRandom.nextObject(Voucher.class);
         when(gateway.findByVoucherEmail(anyString(), anyString())).thenReturn(Optional.of(expectedVoucher));
 
-        var voucherReturn = useCase.execute(VoucherEmailCommand.with(expectedVoucher));
+        var voucherReturn = useCase.execute(VoucherEmailCommand.with(expectedVoucher.getCodeVoucher(), expectedVoucher.getEmail()));
         assertEquals(expectedVoucher.getCodeVoucher(), voucherReturn.codeVoucher());
         assertEquals(expectedVoucher.getFixedPercentageDiscount(), voucherReturn.percentageDiscount());
     }
@@ -51,7 +51,7 @@ public class GetVoucherUseCaseTest {
         expectedVoucher.setExpirationDate(Instant.now().minusMillis(1000));
         when(gateway.findByVoucherEmail(anyString(), anyString())).thenReturn(Optional.of(expectedVoucher));
 
-        assertThrows(VoucherException.class, () -> useCase.execute(VoucherEmailCommand.with(expectedVoucher)));
+        assertThrows(VoucherException.class, () -> useCase.execute(VoucherEmailCommand.with(expectedVoucher.getCodeVoucher(), expectedVoucher.getEmail())));
 
     }
 
@@ -59,7 +59,7 @@ public class GetVoucherUseCaseTest {
     void givenAEmptyVoucherEmail_whenCallsGetVoucher_shouldReturnNotFound() {
         final var voucherMock = easyRandom.nextObject(Voucher.class);
         when(gateway.findByVoucherEmail(anyString(), anyString())).thenReturn(Optional.empty());
-        assertThrows(VoucherException.class, () -> useCase.execute(VoucherEmailCommand.with(voucherMock)));
+        assertThrows(VoucherException.class, () -> useCase.execute(VoucherEmailCommand.with(voucherMock.getCodeVoucher(), voucherMock.getEmail())));
 
     }
 

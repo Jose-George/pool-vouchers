@@ -1,5 +1,6 @@
 package br.com.pool.vouchers.api.core.usecase.voucher.create;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.Instant;
 

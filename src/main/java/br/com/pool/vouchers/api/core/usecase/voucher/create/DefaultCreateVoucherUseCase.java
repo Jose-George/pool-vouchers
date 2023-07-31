@@ -2,9 +2,12 @@ package br.com.pool.vouchers.api.core.usecase.voucher.create;
 
 import br.com.pool.vouchers.api.core.domain.voucher.Voucher;
 import br.com.pool.vouchers.api.core.gateway.VoucherGateway;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class DefaultCreateVoucherUseCase extends CreateVoucherUseCase {
 
     private final VoucherGateway voucherGateway;

@@ -1,6 +1,7 @@
 package br.com.pool.vouchers.api.core.gateway;
 
 import br.com.pool.vouchers.api.core.domain.voucher.Voucher;
+import br.com.pool.vouchers.api.dataprovider.repository.VoucherRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ public interface VoucherGateway {
      *
      * Seta como inativo um voucher, tal como sua hora de utilização
      */
-    Optional<Voucher> redeemVoucher(String codeVoucher, String email);
+    Optional<Voucher> redeemVoucher(Voucher voucher);
+
 
 }

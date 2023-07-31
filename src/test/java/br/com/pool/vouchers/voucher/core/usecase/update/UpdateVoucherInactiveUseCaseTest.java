@@ -38,27 +38,26 @@ public class UpdateVoucherInactiveUseCaseTest {
     public void givenAValidCommand_whenCallsRedeemVoucher_shouldUpdateIsActiveAndUseDate() {
         final var voucher = easyRandom.nextObject(Voucher.class);
 
-        when(gateway.redeemVoucher(voucher.getCodeVoucher(), voucher.getEmail())).thenReturn(Optional.of(voucher));
+        when(gateway.redeemVoucher(voucher)).thenReturn(Optional.of(voucher));
         VoucherInactiveOutput output = useCase.execute(VoucherInactiveCommand.with(voucher.getCodeVoucher(), voucher.getEmail()));
 
         assertFalse(voucher.isActive());
         assertNotNull(voucher.getUseDate());
 
-        verify(gateway, times(1)).redeemVoucher(voucher.getCodeVoucher(), voucher.getEmail());
+        verify(gateway, times(1)).redeemVoucher(voucher);
     }
 
     @Test
     public void givenAInvalidCommand_whenCallsRedeemVoucher_WhenVoucherNotFound() {
-        String codeVoucher = "INVALID_VOUCHER_CODE";
-        String email = "user@example.com";
+        final var voucher = easyRandom.nextObject(Voucher.class);
 
-        VoucherInactiveCommand command = new VoucherInactiveCommand(codeVoucher, email);
+        VoucherInactiveCommand command = new VoucherInactiveCommand(voucher.getCodeVoucher(), voucher.getEmail());
 
-        when(gateway.redeemVoucher(codeVoucher, email)).thenReturn(Optional.empty());
+        when(gateway.redeemVoucher(voucher)).thenReturn(Optional.empty());
 
         assertThrows(VoucherException.class, () -> useCase.execute(command));
 
-        verify(gateway, times(1)).redeemVoucher(codeVoucher, email);
+        verify(gateway, times(1)).redeemVoucher(voucher);
     }
 
 }

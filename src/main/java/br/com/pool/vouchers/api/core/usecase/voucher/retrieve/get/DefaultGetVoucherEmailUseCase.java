@@ -4,7 +4,9 @@ import br.com.pool.vouchers.api.core.exception.VoucherException;
 import br.com.pool.vouchers.api.core.gateway.VoucherGateway;
 import br.com.pool.vouchers.api.core.usecase.utils.VoucherExpiredUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultGetVoucherEmailUseCase extends GetVoucherEmailUseCase {
 
     private final VoucherGateway voucherGateway;

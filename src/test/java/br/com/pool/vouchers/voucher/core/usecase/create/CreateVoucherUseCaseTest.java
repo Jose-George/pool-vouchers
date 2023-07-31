@@ -49,7 +49,7 @@ public class CreateVoucherUseCaseTest {
         final var actualOutput = useCase.execute(command);
 
         Assertions.assertNotNull(actualOutput);
-        Assertions.assertNotNull(actualOutput.voucherId());
+        Assertions.assertNotNull(actualOutput.codeVoucher());
 
         Mockito.verify(gateway, Mockito.times(1))
                 .create(Mockito.argThat(voucher ->
