@@ -26,8 +26,12 @@ public class Voucher {
     private String codeVoucher;
     private Instant expirationDate;
     private Instant createdAt;
+    private String specialOffer;
+    private Instant useDate;
 
-    public Voucher(String id, String name, String nameVoucher, String email, boolean active, BigDecimal fixedPercentageDiscount, String codeVoucher, Instant expirationDate, Instant createdAt) {
+    public Voucher(String id, String name, String nameVoucher, String email, boolean active,
+                   BigDecimal fixedPercentageDiscount, String codeVoucher, Instant expirationDate,
+                   Instant createdAt, String specialOffer, Instant useDate) {
         this.id = id;
         this.name = name;
         this.nameVoucher = nameVoucher;
@@ -37,21 +41,27 @@ public class Voucher {
         this.codeVoucher = codeVoucher;
         this.expirationDate = expirationDate;
         this.createdAt = createdAt;
+        this.specialOffer = specialOffer;
+        this.useDate = useDate;
     }
 
     public static Voucher newVoucher(final String id, final String name, final String nameVoucher,
                                      final String email, final BigDecimal fixedPercentageDiscount,
-                                     final Instant expirationDate) {
+                                     final Instant expirationDate, final String specialOffer) {
 
         final var codeVoucher = generateCodeVoucher();
         final var createdAt = Instant.now();
         final var isActive = true;
-
-        return new Voucher(id, name, nameVoucher, email, isActive, fixedPercentageDiscount, codeVoucher, expirationDate, createdAt);
+        final Instant useDate = null;
+        return new Voucher(id, name, nameVoucher, email, isActive, fixedPercentageDiscount, codeVoucher, expirationDate, createdAt, specialOffer, useDate);
     }
 
     private static String generateCodeVoucher() {
         return UUID.randomUUID().toString().replaceAll("\\d{2}", "").substring(0, 8);
     }
 
+    public void redeemVoucher() {
+        this.useDate = Instant.now();
+        this.active = false;
+    }
 }
