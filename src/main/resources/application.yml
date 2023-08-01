@@ -11,6 +11,14 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:37017/teste
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://localhost:8080/vouchers/oauth2/introspect
+          client-id: voucher-backend
+          client-secret: maria
+
 springdoc:
   packagesToScan: br.com.pool.vouchers.api.entrypoint
   pathsToMatch: /**
@@ -18,3 +26,8 @@ springdoc:
     disable-swagger-default-url: true
     doc-expansion: none
     tagsSorter: alpha
+
+voucher:
+  auth:
+    provider-url: http://localhost:8080/vouchers/oauth2/token
+
