@@ -63,7 +63,7 @@ public class VoucherControllerImpl implements VoucherController {
 
     @Override
     @GetMapping("/specialoffer/{email}")
-    public ResponseEntity<List<?>> getAllSpecialOffer(@PathVariable final String email) {
+    public ResponseEntity<List<?>> getAllSpecialOffers(@PathVariable final String email) {
         return ResponseEntity.ok(listSpecialOfferUseCase.execute(VoucherSpecialOfferCommand.with(email)).stream()
                 .toList());
     }

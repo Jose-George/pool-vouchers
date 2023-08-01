@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  mongo_db:
+    container_name: mongo_vouchers
+    image: mongo:3.6
+    restart: always
+    command: mongod --port 37017 --maxConns 10000 --smallfiles
+    volumes:
+      - mongo_vouchers_db:/data/db
+    ports:
+      - "37017:37017"
+volumes:
+  mongo_vouchers_db:
+    driver: local

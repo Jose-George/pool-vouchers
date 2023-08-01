@@ -10,7 +10,7 @@ spring:
     name: ms-pool-vouchers
   data:
     mongodb:
-      uri: mongodb://localhost:37017/teste
+      uri: mongodb://localhost:37017/vouchers
   security:
     oauth2:
       resourceserver:

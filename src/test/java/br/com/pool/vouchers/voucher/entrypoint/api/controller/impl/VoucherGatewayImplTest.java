@@ -83,7 +83,7 @@ public class VoucherGatewayImplTest {
         final var VoucherSpecialOfferOne = easyRandom.nextObject(VoucherSpecialOfferOutput.class);
         final var VoucherSpecialOfferTwo = easyRandom.nextObject(VoucherSpecialOfferOutput.class);
         when(listSpecialOfferUseCase.execute(any())).thenReturn(List.of(VoucherSpecialOfferOne, VoucherSpecialOfferTwo));
-        final var output = voucherController.getAllSpecialOffer(anyString()).getBody();
+        final var output = voucherController.getAllSpecialOffers(anyString()).getBody();
         verify(listSpecialOfferUseCase, only()).execute(any());
         assertEquals(2, output.size());
 

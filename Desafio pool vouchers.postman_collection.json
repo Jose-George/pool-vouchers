@@ -1,0 +1,240 @@
+{
+  "info": {
+    "_postman_id": "203c0425-189e-43e4-98a8-b58a12240c39",
+    "name": "Desafio pool vouchers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4613699"
+  },
+  "item": [
+    {
+      "name": "POST - Criando Voucher",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"João Pedro\",\r\n  \"nameVoucher\": \"COMPRAS xxx\",\r\n  \"email\": \"joao@email.com\",\r\n  \"percentagemDiscount\": 20,\r\n  \"expirationDate\": \"2024-07-31T22:35:16.004Z\",\r\n  \"specialOffer\": \"IPHONE 14 PRO MAX\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/v1/vouchers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "v1",
+            "vouchers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Voucher por code e email",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"teste\",\r\n    \"nameVoucher\": \"testte\",\r\n    \"email\":\"email\",\r\n    \"percentagemDiscount\":12\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/v1/vouchers/cefd-c1-/joao@email.com",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "v1",
+            "vouchers",
+            "cefd-c1-",
+            "joao@email.com"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT - Resgatar voucher",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"teste\",\r\n    \"nameVoucher\": \"testte\",\r\n    \"email\":\"email\",\r\n    \"percentagemDiscount\":12\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/v1/vouchers/redeem/cefd-c1-/joao@email.com",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "v1",
+            "vouchers",
+            "redeem",
+            "cefd-c1-",
+            "joao@email.com"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Ofertas especiais por email",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"teste\",\r\n    \"nameVoucher\": \"testte\",\r\n    \"email\":\"email\",\r\n    \"percentagemDiscount\":12\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/v1/vouchers/specialoffer/joao@email.com",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "v1",
+            "vouchers",
+            "specialoffer",
+            "joao@email.com"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth token via  Client Credentials",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "maria",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "voucher-backend",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "READ,WRITE",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/oauth2/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "oauth2",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth2 introspect",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "maria",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "voucher-backend",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "token",
+              "value": "fzZsLNkkujukwq3qhve9wXRomLIuBHf7M0v0Qhgkoq8UJcPNQeTR-vqm4SQMQWmm-ek-Ub938LrolxZXh37zejNNWYOQz59QCqYFrFwoBrFxCzpvh6gMwb794-IuzUEL",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/vouchers/oauth2/introspect",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "vouchers",
+            "oauth2",
+            "introspect"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
