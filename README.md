@@ -53,7 +53,7 @@ consulte mais informações sobre [Clean Architecture](https://medium.com/luizal
 | 2      | Verifica se o token está válido | POST | http://localhost:8080/vouchers/oauth2/introspect | Bearer Token            | - |
 | 3      | Criar um voucher | POST | http://localhost:8080/vouchers/v1/vouchers | Bearer Token | - |
 | 4      | Consulta se um voucher vinculado a um e-mail está ativo | GET | http://localhost:8080/vouchers/v1/vouchers/cefd-c1-/joao@email.com | Bearer Token            | - |
-| 5      | Resgate de voucher (desativação) | POST | http://localhost:8080/vouchers/v1/vouchers/redeem/cefd-c1-/joao@email.com | Bearer Token           | - |
+| 5      | Resgate de voucher (desativação) | PUT | http://localhost:8080/vouchers/v1/vouchers/redeem/cefd-c1-/joao@email.com | Bearer Token           | - |
 | 6      | Listar todas as ofertas especiais para um e-mail específico | GET | http://localhost:8080/vouchers/v1/vouchers/specialoffer/joao@email.com | Bearer Token            | - |
 
 Essa tabela resume as rotas e os endpoints da aplicação, juntamente com as informações sobre o método HTTP, autenticação e parâmetros (se aplicável) necessários para cada requisição. Por favor, note que algumas rotas não requerem autenticação (endpoint 2, 3, 4 e 5), enquanto outras exigem autenticação com credenciais do tipo Basic Auth (endpoint 1).
