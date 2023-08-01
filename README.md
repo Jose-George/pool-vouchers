@@ -47,8 +47,6 @@ consulte mais informações sobre [Clean Architecture](https://medium.com/luizal
 
 # Rotas
 
-Aqui está o conteúdo reescrito em formato de tabela:
-
 | Número | Descrição | Método HTTP | Endpoint | Autenticação | Parâmetros |
 | ------ | --------- | ----------- | -------- |--------------| ---------- |
 | 1      | Autorização utilizando Authorization Server com Access Token opaco | POST | http://localhost:8080/vouchers/oauth2/token | Basic Auth   | username: **voucher-backend**<br>password: **maria**<br>Form-data: grant_type=client_credentials<br>scope=READ,WRITE |
