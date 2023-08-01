@@ -53,7 +53,8 @@ public class Voucher {
         final var createdAt = Instant.now();
         final var isActive = true;
         final Instant useDate = null;
-        return new Voucher(id, name, nameVoucher, email, isActive, fixedPercentageDiscount, codeVoucher, expirationDate, createdAt, specialOffer, useDate);
+        return new Voucher(id, name, nameVoucher, email, isActive,fixedPercentageDiscount,
+                codeVoucher, expirationDate, createdAt, specialOffer, useDate);
     }
 
     private static String generateCodeVoucher() {

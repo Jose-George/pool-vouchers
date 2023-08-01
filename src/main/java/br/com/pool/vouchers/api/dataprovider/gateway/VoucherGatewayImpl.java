@@ -7,8 +7,6 @@ import br.com.pool.vouchers.api.dataprovider.repository.VoucherRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +42,7 @@ public class VoucherGatewayImpl implements VoucherGateway {
 
     @Override
     public Optional<Voucher> redeemVoucher(Voucher voucher) {
+        log.info("Resgatando voucher: {}", voucher.getEmail());
         var voucherReturn = voucherRepository.save(buildVoucherEntity(voucher));
         return Optional.ofNullable(mapToVoucher(voucherReturn));
     }
