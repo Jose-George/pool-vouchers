@@ -5,6 +5,7 @@ import br.com.pool.vouchers.api.core.exception.VoucherException;
 import org.springframework.http.HttpStatus;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class  ValidateFieldsVoucherUtils {
 
@@ -25,9 +26,8 @@ public class  ValidateFieldsVoucherUtils {
     }
 
     private static void validateNotNull(Object field, String errorMessage) {
-        if (field == null) {
-            throw new VoucherException(errorMessage, HttpStatus.BAD_REQUEST);
-        }
+        Optional.ofNullable(field)
+                .orElseThrow(() -> new VoucherException(errorMessage, HttpStatus.BAD_REQUEST));
     }
 
 }
